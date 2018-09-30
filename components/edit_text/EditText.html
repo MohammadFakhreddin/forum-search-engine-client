@@ -1,0 +1,22 @@
+<input 
+  v-if="(textColor==null)" 
+  input="text" 
+  inputmode="inputMode" 
+  id="toolbarSearchInput"
+  :style="{width:width,height:height}"
+  class="inlineDiv normalFont text--darken-4  alignCenter  inputBorder"
+  :value="inputValue"
+  @input="updateInputValue($event.target.value)"
+  :placeholder="placeHolder"
+>
+<input 
+  v-else 
+  input="text" 
+  inputmode="inputMode" 
+  id="toolbarSearchInput"
+  :style="{width:width,color:textColor,height:height}"
+  class="inlineDiv normalFont  alignCenter  inputBorder"
+  :value="inputValue"
+  @input="updateInputValue($event.target.value)"
+  :placeholder="placeHolder"
+>

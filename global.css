@@ -1,0 +1,358 @@
+@font-face {
+  font-family: M IRAN Sans;
+  src: url("~/assets/font/isans.ttf");
+}
+
+@font-face {
+  font-family: B YEKAN;
+  src: url("~/assets/font/BYekan.ttf");  
+}
+
+.normalFont {
+  font-family: "M IRAN Sans", serif;
+  color: #323232;
+}
+
+.yekanFont {
+  font-family: "B YEKAN", serif;
+  color: #323232;  
+}
+
+.englishFont {
+  font-family: "Yu Gothic", serif;
+}
+
+.lightText {
+  color: #aaaaaa;
+}
+
+.darkText {
+  color: #797979;
+}
+
+.whiteText {
+  color: white;
+}
+
+.blueText {
+  color: dodgerblue;
+}
+
+.blackText {
+  color: #1D1D1D;
+}
+
+.greenText {
+  color: rgba(21, 197, 120, 1);
+}
+
+.redText{
+  color: red
+}
+
+.yellowText {
+  color: #FCD200;
+}
+
+.smallText {
+  font-size: 14px;
+}
+
+.extraSmallText {
+  font-size: 11px;
+}
+
+.mediumText {
+  font-size: 16px;
+}
+
+.largeText {
+  font-size: 20px;
+}
+
+.inlineDiv {
+  display: inline-block;
+}
+
+.parentDiv {
+  /* float: left; */
+  width: 100%;
+}
+
+.completeSize {
+  width: 100%;
+}
+
+.halfSize {
+  width: 49%;
+}
+
+.thirdSize {
+  width: 33%;
+}
+
+.quarterSize {
+  width: 25%;
+}
+
+.fifthSize {
+  width: 20%;
+}
+
+.tenPercent {
+  width: 10%;
+}
+
+.whiteBackground {
+  background-color: #ffffff
+}
+
+.darkBackground {
+  background-color: #323232;
+}
+
+.lightBackground {
+  background-color: rgba(170, 170, 170, 1);
+}
+
+
+.blackButton {
+  background-color: #1D1D1D;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.marginTop {
+  margin-top: 5px;
+}
+
+.marginBottom {
+  margin-bottom: 5px;
+}
+
+.noBorder {
+  border: 0 white;
+}
+
+
+.searchBackground {
+  padding: 5px;
+  border-radius: 25px;
+  background-color: rgb(244, 244, 244);
+}
+
+.hidden {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  color: transparent;
+  background-color: transparent;
+}
+
+#leftFooter {
+  position: relative;
+  top: +20px;
+  left: -30px;
+  margin-right: 40px;
+  width: 500px;
+  height: 120px;
+  text-align: right
+}
+
+#rightFooter {
+  text-align-last: auto;
+  position: relative;
+  top: 0px;
+  left: -30px;
+  margin-left: 0px;
+  width: 150px;
+}
+
+.footerExtraLinkIcons {
+  opacity: 0.6;
+  font-size: 29px;
+  margin: 5px;
+  position: relative;
+  top: -20px;
+  left: 250px
+}
+
+.button:hover {
+  opacity: 0.5;
+  transition: opacity .2s ease-out;
+  -moz-transition: opacity .2s ease-out;
+  -webkit-transition: opacity .2s ease-out;
+  -o-transition: opacity .2s ease-out;
+}
+
+.regular-checkbox {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 9px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.regular-checkbox:active, .regular-checkbox:checked:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.regular-checkbox:checked {
+  background-color: #e9ecee;
+  border: 1px solid #adb8c0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+  color: #99a1a7;
+}
+
+.regular-checkbox:checked:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  color: #99a1a7;
+}
+
+.redButton {
+  border-radius: 4px;
+  background-color: rgba(255, 0, 0, 0.81);
+}
+
+.greenButton {
+  border-radius: 4px;
+  background-color: rgba(21, 197, 120, 1);
+}
+
+.blueButton {
+  background-color: dodgerblue;
+  border-radius: 4px;
+}
+
+.progressBarParent {
+  background-color: #797979;
+  border-radius: 5px;
+}
+
+.progressBarChild {
+  border-radius: 5px;
+  background-color: rgba(21, 197, 120, 1);
+}
+
+#toolbarSearchIcon {
+  width: 10%
+}
+
+#toolbarSearchInput {
+  width: 80%;
+}
+
+#toolbarLoginParent {
+  background-color: dodgerblue;
+  padding: 1px;
+  border-radius: 6px;
+}
+
+#footerMenuParent {
+  margin-top: 10px;
+}
+
+#footerBoxParent {
+  padding: 1px;
+  border-radius: 5px;
+}
+
+#footerBox {
+  border-radius: 4px;
+}
+
+#footerRulesLine {
+  background-color: dodgerblue;
+  height: 1px;
+}
+
+#footerRulesTextParent {
+  margin-top: 10px;
+}
+
+#toolbarLoginBlueButton {
+  border: 2px dodgerblue;
+  padding: 10px;
+  color: dodgerblue;
+  background-color: white;
+  border-radius: 5px;
+}
+
+#toolbarLoginBlueButton:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.greenBackground {
+  background-color: rgba(21, 197, 120, 1);;
+}
+
+.yellowBackground {
+  background-color: #FCD200;
+}
+
+.lightBlueText {
+  color: #37C8D0;
+}
+
+.lightBlueBackground {
+  background-color: #37C8D0;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.flexDisplay{
+  display: flex;
+}
+
+.columnFlexDirection{
+  flex-direction: column;
+}
+
+.rowFlexDirection{
+  flex-direction: row
+}
+
+.flexDirectionCenter{
+  justify-content: center;
+}
+
+.flexDirectionRight{
+  justify-content: right;
+}
+
+.flexDirectionLeft{
+  justify-content: left;
+}
+
+.smallMargin{
+  margin: 5px;
+}
+
+.roundBlackBorder {
+  display:  inline-block;
+  user-select: none;
+  -moz-border-radius: 10px; /* or 50% */
+  border-radius: 10px; /* or 50% */
+  background: rgba(0, 0, 0, 0.4);
+}
