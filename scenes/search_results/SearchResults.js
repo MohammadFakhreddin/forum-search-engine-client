@@ -1,5 +1,5 @@
-import BodyText from '~/components/body_text/BodyText.vue'
-import HeaderText from '~/components/header_text/HeaderText.vue'
+import BodyText from './../../components/body_text/BodyText.vue'
+import HeaderText from './../../components/header_text/HeaderText.vue'
 import { HttpManager } from './../../network/HttpManager'
 import { StatusCodes } from './../../Constants'
 

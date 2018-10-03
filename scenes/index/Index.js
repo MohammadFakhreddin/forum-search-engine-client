@@ -1,7 +1,7 @@
-import EditText from '~/components/edit_text/EditText.vue'
-import HeaderText from '~/components/header_text/HeaderText.vue'
-import { HttpManager } from '~/network/HttpManager.js'
-import { StatusCodes } from '~/Constants.js'
+import EditText from './../../components/edit_text/EditText.vue'
+import HeaderText from './../../components/header_text/HeaderText.vue'
+import { HttpManager } from './../../network/HttpManager.js'
+import { StatusCodes } from './../../Constants.js'
 
 export default {
   components: {
