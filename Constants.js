@@ -6,7 +6,8 @@ export const NetworkConstants = {
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json; charset=utf-8'
-  }
+  },
+  requestPageSize: 20
 }
 
 export const StatusCodes = {

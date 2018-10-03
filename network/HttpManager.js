@@ -5,20 +5,37 @@ import GraphQLQueryCompress from 'graphql-query-compress'
 let instance = null
 
 export class HttpManager {
+  /**
+   * @returns {HttpManager}
+   */
   static getInstance () {
     if (instance == null) {
       instance = new HttpManager()
     }
     return instance
   }
-  search (value) {
+  /**
+   * 
+   * @param {String} value 
+   * @param {Number} pageNumber 
+   * @returns {Promise}
+   */
+  search (value, pageNumber) {
     return new Promise((resolve) => {
       const onParsedResponseIsReady = (parsedResponse) => {
         const statusCode = Number(parsedResponse.search.statusCode)
-        resolve({statusCode: statusCode, res: parsedResponse.search.res})
+        resolve({
+          statusCode: statusCode,
+          res: parsedResponse.search.res,
+          hasNextPage: parsedResponse.search.res != null && parsedResponse.search.res.length === NetworkConstants.requestPageSize
+        })
       }
       const query = GraphQLQueryCompress(`query{
-        search(text:"${value}"){
+        search(
+          text:"${value}",
+          pageNumber:${pageNumber},
+          pageSize:${NetworkConstants.requestPageSize}
+        ){
           statusCode,
           res{
             url,

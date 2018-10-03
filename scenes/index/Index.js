@@ -15,10 +15,11 @@ export default {
   },
   methods: {
     onSearchButtonClicked: async function () {
-      if (this.searchValue.trim() === '') {
+      const normalizedSearchValue = this.searchValue.trim()
+      if (normalizedSearchValue === '') {
         return
       }
-      const { statusCode, res, err } = await HttpManager.getInstance().search(this.searchValue)
+      const { statusCode, res, err, hasNextPage } = await HttpManager.getInstance().search(normalizedSearchValue, 1)
       if (statusCode !== StatusCodes.ok) {
         console.warn(statusCode)// TODO Show error message instead
         console.warn(err)
@@ -27,7 +28,10 @@ export default {
       console.warn()
       this.$router.push({ name: 'SearchResults',
         params: {
-          res: res
+          res: res,
+          currentPage: 1,
+          hasNextPage: hasNextPage,
+          searchValue: normalizedSearchValue
         }
       })
     }
