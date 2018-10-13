@@ -15,3 +15,5 @@ export const StatusCodes = {
   internal: 500,
   ok: 200
 }
+
+export const AppName = 'سامانه ی جستجو بر روی تالار های گفتگو'

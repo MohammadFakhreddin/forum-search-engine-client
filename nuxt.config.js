@@ -66,6 +66,6 @@ module.exports = {
   },
   server: {
     port: 3000, // default: 3000
-    host: '176.31.146.42' // default: localhost
+    host: 'localhost' // default: localhost
   }
 }

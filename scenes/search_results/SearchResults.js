@@ -1,7 +1,8 @@
 import BodyText from './../../components/body_text/BodyText.vue'
 import HeaderText from './../../components/header_text/HeaderText.vue'
 import { HttpManager } from './../../network/HttpManager'
-import { StatusCodes } from './../../Constants'
+import { StatusCodes, AppName } from './../../Constants'
+import EditText from './../../components/edit_text/EditText.vue'
 
 export default {
   data () {
@@ -10,36 +11,61 @@ export default {
       currentPage: 1,
       hasNextPage: false,
       searchValue: '',
-      currentPageText: 'صفحه ی ۱'
+      currentPageText: 'صفحه ی ۱',
+      appName: AppName,
+      isLoading: false,
+      errorText: null
     }
   },
   components: {
     'body-text': BodyText,
-    'header-text': HeaderText
+    'header-text': HeaderText,
+    'edit-text': EditText
   },
-  created () {
-    if (this.$route.params == null || this.$route.params.res == null) {
+  created: function () {
+    if (this.$route.query == null ||
+      this.$route.query.searchValue == null ||
+      this.$route.query.searchValue === ''
+    ) {
       this.$router.push({name: 'index'})
       return
     }
-    this.searchResults = this.$route.params.res
-    this.currentPage = this.$route.params.currentPage
-    this.hasNextPage = this.$route.params.hasNextPage
-    this.searchValue = this.$route.params.searchValue
+    this.currentPage = Number(this.$route.query.currentPage)
+    this.searchValue = this.$route.query.searchValue
     this.updateCurrentPageText()
+    if (this.isLoading === true) {
+      return
+    }
+    this.goToPage(this.currentPage)
   },
   methods: {
     goToPage: async function (pageNumber) {
-      const { statusCode, res, err, hasNextPage } = await HttpManager.getInstance().search(this.searchValue, pageNumber)
+      this.$router.push({ name: 'SearchResults',
+        query: {
+          currentPage: pageNumber,
+          searchValue: this.searchValue
+        }
+      })
+      this.currentPage = pageNumber
+      this.updateCurrentPageText()
+      const normalizedSearchValue = this.searchValue.trim()
+      if (normalizedSearchValue === '') {
+        return
+      }
+      this.searchResults = []
+      this.isLoading = true
+      const { statusCode, res, err, hasNextPage } = await HttpManager.getInstance().search(normalizedSearchValue, this.currentPage)
+      this.isLoading = false
       if (statusCode !== StatusCodes.ok) {
         console.warn(statusCode)// TODO Show error message instead
         console.warn(err)
-        return
+        this.errorText = 'خطا در اتصال '.concat(statusCode)
+        setTimeout(() => {
+          this.errorText = null
+        }, 4000)
       }
-      this.searchResults = res
-      this.currentPage = pageNumber
       this.hasNextPage = hasNextPage
-      this.updateCurrentPageText()
+      this.searchResults = res
     },
     previousPage () {
       if (this.currentPage !== 1) {
@@ -53,6 +79,11 @@ export default {
     },
     updateCurrentPageText () {
       this.currentPageText = `صفحه ی ${this.currentPage}`
+    },
+    onSearchButtonClicked () {
+      if (this.isLoading === false) {
+        this.goToPage(1)
+      }
     }
   }
 }

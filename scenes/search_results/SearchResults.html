@@ -6,11 +6,106 @@
     style="width: 100%"
     column
   >
-    <header-text
-      v-bind:text="currentPageText"
-      externalClass="text-xs-right xs12 mr-4 ml-4"
-      style="width: 100%"
-    />
+    <v-layout
+      row
+      align-center
+      justify-end
+      style="width:100%;"
+    >
+      <header-text 
+        class="normalFont" 
+        :text="appName"
+      />
+    </v-layout>
+    <v-layout
+      row
+      align-center
+      justify-center
+      style="width:100%;"
+      class="mt-4"
+    >
+      <v-card
+        row
+        align-center
+        justify-center
+        style="flex-wrap: nowrap;width:30em;"
+      >
+        <v-btn 
+          flat 
+          icon 
+          color="blue darken-1"
+          @click.native="onSearchButtonClicked()"
+        >
+          <v-icon>search</v-icon>
+        </v-btn>
+        <edit-text 
+          inputMode="text" 
+          placeHolder=""
+          width="79%" 
+          height="2em" 
+          :v-model="searchValue"
+          class="mr-2"
+          :inputValue="searchValue"
+        />
+      </v-card>
+    </v-layout>
+    <v-layout
+      style="width:100%;height:4em"
+      align-center
+      justify-center
+      v-if="isLoading===true||errorText!=null"
+    >
+      <v-progress-linear 
+        v-if="isLoading===true"
+        :indeterminate="true"
+        style="width:100%"
+      >
+      </v-progress-linear>
+      <v-alert
+        :value="errorText!=null"
+        type="error"
+        style="width:100%"
+      >
+      {{
+        errorText
+      }}
+      </v-alert>
+    </v-layout>
+    <v-layout
+      style="width:100%"
+      align-center 
+      justify-start
+      row
+      class="mt-4"
+      v-if="isLoading===false"
+    >
+      <v-btn
+        v-if="hasNextPage===true"
+        color="blue darken-1" 
+        class="mr-4 mt-4 yekanFont bold" 
+        dark 
+        @click.native="nextPage()"
+      >
+      صفحه ی بعد
+      </v-btn>
+      <v-btn
+        v-if="currentPage!==1"
+        color="blue darken-1" 
+        class="mr-4 mt-4 yekanFont bold" 
+        dark 
+        @click.native="previousPage()"
+      >
+        صفحه ی قبل
+      </v-btn>
+      <View
+        style="width:100%"
+      />
+      <header-text
+        v-bind:text="currentPageText"
+        externalClass="text-xs-right xs12"
+        style="width: 100%"
+      />
+    </v-layout>
     <v-list
       style="width: 100%"
     >
@@ -18,25 +113,27 @@
         v-for="(item,index) in searchResults"
         class="mt-4 xs12"
         style="width: 100%"
+        :key="index"
       >
         <v-layout
           class="xs12"
+          key="index"
           style="width: 100%"
         >
           <a v-bind:href="item.url" target="_blank" style="width: 100%">
             <v-layout column justify-center align-center pt-2 pr-4 pl-4 style="width: 100%">
               <header-text
-                v-bind:text="item.previewTitle.replace(/[^آ-ی0-9]/,' ')"
+                v-bind:text="item.previewTitle!=null ? item.previewTitle.replace(/[^آ-ی0-9]/,' ') : ''"
                 externalClass="text-xs-right xs12 mr-4 ml-4"
                 style="width: 100%"
               />
               <body-text
-                v-bind:text="item.url.length < 30 ? item.url : item.url.substring(0,30)"
+                v-bind:text="item.url!=null ? item.url.length < 30 ? item.url : item.url.substring(0,30) : ''"
                 externalClass="greenText text-xs-right xs12"
                 style="width: 100%"
               />
               <body-text
-                v-bind:text="item.previewBody.replace(/[^آ-ی0-9]/,' ')"
+                v-bind:text="item.previewBody!=null ? item.previewBody.replace(/[^آ-ی0-9]/,' ') : ''"
                 externalClass="text-xs-right xs12"
                 style="width: 100%"
               />
@@ -52,33 +149,9 @@
       style="width:100%;height:100%"
     >
       <header-text
+        v-if="isLoading===false"
         text="نتیجه ای یافت نشد"
       />
-    </v-layout>
-    <v-layout
-      style="width:100%"
-      align-center 
-      justify-start
-      row
-    >
-      <v-btn
-        v-if="currentPage!==1"
-        color="blue darken-1" 
-        class="mr-4 mt-4 yekanFont bold" 
-        dark 
-        @click.native="previousPage()"
-      >
-        صفحه ی قبل
-      </v-btn>
-      <v-btn
-        v-if="hasNextPage===true"
-        color="blue darken-1" 
-        class="mr-4 mt-4 yekanFont bold" 
-        dark 
-        @click.native="nextPage()"
-      >
-        صفحه ی بعد
-      </v-btn>
     </v-layout>
   </v-layout>
 </v-container>

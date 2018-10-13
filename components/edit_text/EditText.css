@@ -1,10 +1,11 @@
 .inputBorder{
   font-size:18px;
-  border:solid 1px #aaaaaa;
+  border:solid 0px transparent;
   border-radius: 4px;
-  background-color:white
+  background-color:white;
+  text-align: right;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #aaaaaa;
+  color: #323232;
   opacity: 1; /* Firefox */
 }

@@ -1,7 +1,26 @@
 <v-layout column justify-center align-center>
-  <header-text class="normalFont mb-2" text="سامانه ی جستجو بر روی تالار های گفتگو"/>
-  <edit-text inputMode="text" placeHolder="" width="18em" v-model="searchValue"/>
-  <v-btn color="green darken-1" class="mr-4 mt-4 yekanFont bold" dark @click.native="onSearchButtonClicked()">
-    جستجو
-  </v-btn>
+  <header-text class="normalFont mb-2" :text="appName"/>
+  <v-card
+    row
+    align-center
+    justify-center
+    style="flex-wrap: nowrap;width:30em;"
+  >
+    <v-btn 
+      flat 
+      icon 
+      color="blue darken-1"
+      @click.native="onSearchButtonClicked()"
+    >
+      <v-icon>search</v-icon>
+    </v-btn>
+    <edit-text 
+      inputMode="text" 
+      placeHolder=""
+      width="79%" 
+      height="2em" 
+      v-model="searchValue"
+      class="mr-2"
+    />
+  </v-card>
 </v-layout>
