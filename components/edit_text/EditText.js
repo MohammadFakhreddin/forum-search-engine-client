@@ -10,7 +10,9 @@ export default{
     'textColor',
     'height',
     'inputValue',
-    'extraStyle'
+    'extraStyle',
+    'startValue',
+    'input'
   ],
   methods: {
     updateInputValue: function (value) {

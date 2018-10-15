@@ -40,6 +40,10 @@ export default {
   },
   methods: {
     goToPage: async function (pageNumber) {
+      const normalizedSearchValue = this.searchValue.trim()
+      if (normalizedSearchValue === '') {
+        return
+      }
       this.$router.push({ name: 'SearchResults',
         query: {
           currentPage: pageNumber,
@@ -48,10 +52,6 @@ export default {
       })
       this.currentPage = pageNumber
       this.updateCurrentPageText()
-      const normalizedSearchValue = this.searchValue.trim()
-      if (normalizedSearchValue === '') {
-        return
-      }
       this.searchResults = []
       this.isLoading = true
       const { statusCode, res, err, hasNextPage } = await HttpManager.getInstance().search(normalizedSearchValue, this.currentPage)
@@ -84,6 +84,10 @@ export default {
       if (this.isLoading === false) {
         this.goToPage(1)
       }
+    },
+    onSearchValueChanged (value) {
+      this.searchValue = value
+      console.warn(this.searchValue)
     }
   }
 }

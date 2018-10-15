@@ -38,15 +38,13 @@
         >
           <v-icon>search</v-icon>
         </v-btn>
-        <edit-text 
-          inputMode="text" 
-          placeHolder=""
-          width="79%" 
-          height="2em" 
-          :v-model="searchValue"
-          class="mr-2"
-          :inputValue="searchValue"
-        />
+        <input 
+          input="text" 
+          inputmode="inputMode" 
+          style="width:79%"
+          class="inlineDiv normalFont  alignCenter  inputBorder"
+          v-model="searchValue"
+        >
       </v-card>
     </v-layout>
     <v-layout
